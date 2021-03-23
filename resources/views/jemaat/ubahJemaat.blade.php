@@ -151,7 +151,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pekerjaan">Pekerjaan</label>
-                             <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="{{$jemaat['pekerjaan']}}">
+                            <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="{{$jemaat['pekerjaan']}}">
                         </div>
                         <div class="form-group">
                             <label for="namaAyah">Nama Ayah</label>
@@ -224,8 +224,8 @@
 
         </div>
         <div class="d-flex justify-content-end my-2">
-            <button type="button" class="btn btn-primary pertama mr-2" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            <button type="button" class="btn btn-primary pertama mr-2" id="prevBtn" onclick="nextPrev(-1)">Sebelumnya</button>
+            <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Lanjut</button>
         </div>
         <div></div>
 

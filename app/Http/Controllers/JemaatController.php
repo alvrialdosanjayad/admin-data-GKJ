@@ -25,7 +25,7 @@ use Illuminate\Http\Request;
 
 class JemaatController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -45,7 +45,6 @@ class JemaatController extends Controller
     public function index()
     {
         return view('jemaat.index');
-
     }
 
     /**
@@ -131,9 +130,9 @@ class JemaatController extends Controller
 
         $jemaat->save();
 
-        event(new Registered($data = $this->createUser($data)));
+        event(new Registered($this->createUser($data)));
 
-        $id  = DB::table('jemaat')->select(DB::raw('MAX(kode_jemaat) AS id'))->first();
+        $id  = DB::table('jemaat')->select(DB::raw('kode_jemaat AS id'))->where('kode_jemaat', $data)->first();
 
         return redirect('/jemaat/' . Crypt::encryptString($id->id))->with('status', 'Data Berhasil Ditambahkan');
     }

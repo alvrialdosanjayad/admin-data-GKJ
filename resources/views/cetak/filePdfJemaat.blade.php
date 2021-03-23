@@ -42,7 +42,7 @@
         </tr>
         <tr>
             <td width="20%">No. HP</td>
-            @if ($cek->no_hp === null)
+            @if ($cek->no_hp === null || $cek->no_hp === '')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{$cek->no_hp}}</td>
@@ -50,7 +50,7 @@
         </tr>
         <tr>
             <td width="20%">No. Telp</td>
-            @if ($cek->no_tlpn === null)
+            @if ($cek->no_tlpn === null || $cek->no_tlpn === '')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{$cek->no_tlpn}}</td>
@@ -58,7 +58,7 @@
         </tr>
         <tr>
             <td width="20%">Nama Ayah</td>
-            @if ($cek->nama_ayah === null)
+            @if ($cek->nama_ayah === null || $cek->nama_ayah === '')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{$cek->nama_ayah}}</td>
@@ -66,7 +66,7 @@
         </tr>
         <tr>
             <td width="20%">Nama Ibu</td>
-            @if ($cek->nama_ibu === null)
+            @if ($cek->nama_ibu === null || $cek->nama_ibu === '')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{$cek->nama_ibu}}</td>
@@ -86,7 +86,11 @@
         </tr>
         <tr>
             <td width="20%">Pekerjaan</td>
+            @if ($cek->pekerjaan === null || $cek->pekerjaan === '')
+            <td width="80%">: -</td>
+            @else
             <td width="80%">: {{$cek->pekerjaan}}</td>
+            @endif
         </tr>
         <tr>
             <td width="20%">Status Nikah</td>
@@ -94,7 +98,7 @@
         </tr>
         <tr>
             <td width="20%">Tanggal Nikah</td>
-            @if ($cek->tgl_nikah === null)
+            @if ($cek->tgl_nikah === null || $cek->tgl_nikah === '' || $cek->tgl_nikah === '0000-00-00')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{date('d F Y', strtotime($cek->tgl_nikah))}}</td>
@@ -102,7 +106,7 @@
         </tr>
         <tr>
             <td width="20%">Pendeta Nikah</td>
-            @if ($cek->pendeta_nikah === null)
+            @if ($cek->pendeta_nikah === null || $cek->pendeta_nikah === '')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{$cek->pendeta_nikah}}</td>
@@ -110,7 +114,7 @@
         </tr>
         <tr>
             <td width="20%">Nama Suami/Istri</td>
-            @if ($cek->nama_suamiistri === null)
+            @if ($cek->nama_suamiistri === null || $cek->nama_suamiistri === '')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{$cek->nama_suamiistri}}</td>
@@ -122,7 +126,7 @@
         </tr>
         <tr>
             <td width="20%">Tanggal Meninggal</td>
-            @if ($cek->tgl_meninggal === null)
+            @if ($cek->tgl_meninggal === null || $cek->tgl_meninggal === '')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{date('d F Y', strtotime($cek->tgl_meninggal))}}</td>
@@ -130,7 +134,7 @@
         </tr>
         <tr>
             <td width="20%">Tempat Meninggal</td>
-            @if ($cek->tempat_meninggal === null)
+            @if ($cek->tempat_meninggal === null || $cek->tempat_meninggal === '')
             <td width="80%">: -</td>
             @else
             <td width="80%">: {{$cek->tempat_meninggal}}</td>

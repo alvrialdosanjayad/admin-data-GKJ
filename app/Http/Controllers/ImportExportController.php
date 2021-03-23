@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\JemaatImport;
-use App\Imports\UsersImport;
 use App\Exports\JemaatExport;
 
 class ImportExportController extends Controller
@@ -15,7 +14,7 @@ class ImportExportController extends Controller
     {
         # code...
         $post = $this->validate($request, [
-            'importData' => 'required|mimes:xlsx,xls,csv'
+            'importData' => 'required|mimes:xlsx'
         ]);
 
         Excel::import(new JemaatImport, $request->file('importData')->store('temp'));

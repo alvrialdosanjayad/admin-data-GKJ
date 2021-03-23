@@ -32,7 +32,11 @@
                             <th width="15%">Tempat lahir</th>
                             <td width="35%">: {{$jemaat->tempat_lahir}}</td>
                             <th width="15%">Pekerjaan</th>
+                            @if ($jemaat->pekerjaan === null || $jemaat->pekerjaan === '')
+                            <td width="35%">: -</td>
+                            @else
                             <td width="35%">: {{$jemaat->pekerjaan}}</td>
+                            @endif
                         </tr>
                         <tr>
                             <th width="15%">Tanggal Lahir</th>
@@ -44,7 +48,7 @@
                             <th width="15%">Jenis Kelamin</th>
                             <td width="35%">: {{$jemaat->jenis_kelamin}}</td>
                             <th width="15%">Tanggal Nikah</th>
-                            @if ($jemaat->tgl_nikah === null)
+                            @if ($jemaat->tgl_nikah === null || $jemaat->tgl_nikah === '' || $jemaat->tgl_nikah === '0000-00-00')
                             <td width="35%">: -</td>
                             @else
                             <td width="35%">: {{date('d F Y', strtotime($jemaat->tgl_nikah))}}</td>
@@ -54,7 +58,7 @@
                             <th width="15%">Gol. Darah</th>
                             <td width="35%">: {{$jemaat->golangan_darah}}</td>
                             <th width="15%">Pendeta Nikah</th>
-                            @if ($jemaat->pendeta_nikah === null)
+                            @if ($jemaat->pendeta_nikah === null || $jemaat->pendeta_nikah === '')
                             <td width="35%">: -</td>
                             @else
                             <td width="35%">: {{$jemaat->pendeta_nikah}}</td>
@@ -68,7 +72,7 @@
                             <td width="35%">: {{$jemaat->no_hp}}</td>
                             @endif
                             <th width="15%">Nama Suami/Istri</th>
-                            @if ($jemaat->nama_suamiistri === null)
+                            @if ($jemaat->nama_suamiistri === null || $jemaat->nama_suamiistri === '')
                             <td width="35%">: -</td>
                             @else
                             <td width="35%">: {{$jemaat->nama_suamiistri}}</td>
@@ -76,7 +80,7 @@
                         </tr>
                         <tr>
                             <th width="15%">No. Telp</th>
-                            @if ($jemaat->no_tlpn === null)
+                            @if ($jemaat->no_tlpn === null || $jemaat->no_tlpn === '')
                             <td width="35%">: -</td>
                             @else
                             <td width="35%">: {{$jemaat->no_tlpn}}</td>
@@ -87,13 +91,13 @@
                         </tr>
                         <tr>
                             <th width="15%">Nama Ayah</th>
-                            @if ($jemaat->nama_ayah === null)
+                            @if ($jemaat->nama_ayah === null || $jemaat->nama_ayah === '')
                             <td width="35%">: -</td>
                             @else
                             <td width="35%">: {{$jemaat->nama_ayah}}</td>
                             @endif
                             <th width="15%">Tanggal Meninggal</th>
-                            @if ($jemaat->tgl_meninggal === null)
+                            @if ($jemaat->tgl_meninggal === null || $jemaat->tgl_meninggal === '')
                             <td width="35%">: -</td>
                             @else
                             <td width="35%">: {{date('d F Y', strtotime($jemaat->tgl_meninggal))}}</td>
@@ -101,13 +105,13 @@
                         </tr>
                         <tr>
                             <th width="2%">Nama Ibu</th>
-                            @if ($jemaat->nama_ibu === null)
+                            @if ($jemaat->nama_ibu === null || $jemaat->nama_ibu === '')
                             <td width="35%">: -</td>
                             @else
                             <td width="35%">: {{$jemaat->nama_ibu}}</td>
                             @endif
                             <th width="15%">Tempat Meninggal</th>
-                            @if ($jemaat->tempat_meninggal === null)
+                            @if ($jemaat->tempat_meninggal === null || $jemaat->tempat_meninggal === '')
                             <td width="35%">: -</td>
                             @else
                             <td width="35%">: {{$jemaat->tempat_meninggal}}</td>
@@ -122,7 +126,7 @@
                         <tr>
                             <th width="15%">Alamat</th>
                             <td width="35%">: {{$jemaat->alamat}}</td>
-                             <th width="15%">Wilayah</th>
+                            <th width="15%">Wilayah</th>
                             <td width="35%">: {{$jemaat->wilayah}}</td>
                         </tr>
 
@@ -133,7 +137,7 @@
             </div>
             <a href="{{url('/jemaat/' . Crypt::encryptString($id) . '/edit')}}" class="btn btn-primary btn-sm edit-post"><i class="far fa-edit"></i> Ubah Data</a>
             <a href="{{route('cetak.cetakJemaat', Crypt::encryptString($id))}}" class="btn btn-primary btn-sm edit-post"><i class="fa fa-print"></i> Cetak Data</a>
-            @if ($jemaat->foto_surat_baptis != null)
+            @if ($jemaat->foto_surat_baptis != null || $jemaat->foto_surat_baptis != '')
             <a href="{{route('jemaat.baptis', $jemaat->foto_surat_baptis)}}" class="btn btn-primary btn-sm edit-post"><i class="fa fa-download"></i> Unduh Surat Baptis</a>
             @endif
 
