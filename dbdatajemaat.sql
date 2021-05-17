@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2021 at 08:02 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: May 17, 2021 at 06:42 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dbdatajemaat`
+-- Database: `dbdbdatajemaat`
 --
 
 -- --------------------------------------------------------
@@ -274,7 +273,10 @@ INSERT INTO `pendidikan` (`id`, `pendidikan`) VALUES
 (7, 'S1'),
 (8, 'S2'),
 (9, 'S3'),
-(10, 'Lainnya');
+(10, 'Lainnya'),
+(11, 'D1'),
+(12, 'D2'),
+(13, 'Belum Sekolah');
 
 -- --------------------------------------------------------
 
@@ -352,6 +354,13 @@ CREATE TABLE `warta` (
   `nama_warta` varchar(255) NOT NULL,
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `warta`
+--
+
+INSERT INTO `warta` (`id`, `nama_warta`, `tanggal`) VALUES
+(2, 'Warta_Jemaat_2021-05-09.pdf', '2021-05-09');
 
 -- --------------------------------------------------------
 
@@ -513,7 +522,7 @@ ALTER TABLE `pekerjaan`
 -- AUTO_INCREMENT for table `pendidikan`
 --
 ALTER TABLE `pendidikan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `status_jemaat`
@@ -531,13 +540,13 @@ ALTER TABLE `status_nikah`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8969;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `warta`
 --
 ALTER TABLE `warta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wilayah`
