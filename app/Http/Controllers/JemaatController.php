@@ -230,6 +230,7 @@ class JemaatController extends Controller
 
         Jemaat::where('kode_jemaat', $id)->update([
             'nama_lengkap' => $request->namaLengkap,
+            'status_jemaat' => $request->statusJemaat,
             'no_kk' => $request->noKk,
             'hub_keluarga' => $request->hubKeluarga,
             'wilayah_gereja' => $request->wilGereja,

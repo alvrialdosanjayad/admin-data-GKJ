@@ -17,9 +17,10 @@ class JemaatImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
+
         return new Jemaat([
             //
-            'kode_jemaat'  => $this->ambilKode($row['wilayahgereja']),
+            'kode_jemaat'  => $this->ambilKode($row),
             'nama_lengkap'    => $row['namalengkap'],
             'status_jemaat'    => $row['statusjemaat'],
             'no_kk'    => $row['nomorkk'],
@@ -49,26 +50,29 @@ class JemaatImport implements ToModel, WithHeadingRow
             'tgl_entri' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tglentri']),
         ]);
     }
-    
-    protected function ambilKode($value)
+
+    protected function ambilKode(array $value)
     {
+
         $data = DB::table('jemaat')
             ->select(
                 DB::raw('max(kode_jemaat) as id')
             )
-            ->where('wilayah_gereja', $value)
+            ->where('wilayah_gereja', $value['wilayahgereja'])
             ->first();
 
         $hasil = $data->id;
         $baru = (int) substr($hasil, 3);
         $baru++;
-        $wilayah =  sprintf("%02s", $value);
+        $wilayah = sprintf("%02s", $value['wilayahgereja']);
         $kode = $wilayah . '.' . sprintf("%05s", $baru);
-        
+        $password = strtolower($value['tempatlahir']);
+
         DB::table('users')->insert([
             'username'  => $kode,
             'role'      => 'jemaat',
-            'password'  => Hash::make('12345678'),
+            'user' => $value['namalengkap'],
+            'password'  => Hash::make($password),
             'created_at' => date('Y-m-d H:i:s'),
             'created_at' => date('Y-m-d H:i:s'),
         ]);

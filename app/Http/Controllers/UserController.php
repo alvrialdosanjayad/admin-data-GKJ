@@ -50,7 +50,7 @@ class UserController extends Controller
                 return DataTables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function ($data) {
-                        if($data->role == 'admin'){
+                        if ($data->role == 'admin') {
                             $button = '<div class="d-flex justify-content-center">';
                             $button .= '<button type="button" name="delete" id="' . $data->username . '" class="delete btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>';
                             $button .= '</div>';
@@ -61,7 +61,7 @@ class UserController extends Controller
                     ->addIndexColumn()
                     ->make(true);
             }
-            
+
 
             return view('user.index');
         } else {

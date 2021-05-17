@@ -53,8 +53,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="statusKeluarga">Status Jemaat</label>
-                            <select class="form-control" id="statusKeluarga" name="statusKeluarga">
+                            <label for="statusJemaat">Status Jemaat</label>
+                            <select class="form-control" id="statusJemaat" name="statusJemaat">
                                 @foreach($statusJemaat as $status)
                                 @if ($jemaat['status_jemaat'] === $status['id'])
                                 <option value="{{$status['id']}}" selected>{{$status['status_jemaat']}}</option>

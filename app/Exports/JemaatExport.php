@@ -27,10 +27,29 @@ class JemaatExport extends DefaultValueBinder implements WithCustomValueBinder, 
     {
         return Jemaat::query();
     }
-    
+
+    public static function dateTimeToExcel($date)
+    {
+        if ($date == '') {
+            return null;
+        } elseif ($date == '0000-00-00') {
+            return null;
+        } else {
+            $dateValue = new \DateTime($date);
+            return Date::formattedPHPToExcel(
+                (int) $dateValue->format('Y'),
+                (int) $dateValue->format('m'),
+                (int) $dateValue->format('d'),
+                (int) $dateValue->format('H'),
+                (int) $dateValue->format('i'),
+                (int) $dateValue->format('s')
+            );
+        }
+    }
+
     public function bindValue(Cell $cell, $value)
     {
-        if (is_string( $value )) {
+        if (is_string($value)) {
             $cell->setValueExplicit($value, DataType::TYPE_STRING);
 
             return true;
@@ -39,8 +58,8 @@ class JemaatExport extends DefaultValueBinder implements WithCustomValueBinder, 
         // else return default behavior
         return parent::bindValue($cell, $value);
     }
-    
-    
+
+
     /**
      * @var Jemaat $invoice
      */
@@ -54,7 +73,7 @@ class JemaatExport extends DefaultValueBinder implements WithCustomValueBinder, 
             $invoice->hub_keluarga,
             $invoice->wilayah_gereja,
             $invoice->tempat_lahir,
-            Date::dateTimeToExcel($invoice->tanggal_lahir),
+            $this->dateTimeToExcel($invoice->tanggal_lahir),
             $invoice->jenis_kelamin,
             $invoice->golongan_darah,
             $invoice->alamat,
@@ -65,14 +84,14 @@ class JemaatExport extends DefaultValueBinder implements WithCustomValueBinder, 
             $invoice->nama_ayah,
             $invoice->nama_ibu,
             $invoice->status_nikah,
-            Date::dateTimeToExcel($invoice->tgl_nikah),
+            $this->dateTimeToExcel($invoice->tgl_nikah),
             $invoice->gereja_nikah,
             $invoice->pendeta_nikah,
             $invoice->nama_suamiistri,
             $invoice->keadaan,
-            Date::dateTimeToExcel($invoice->tgl_meninggal),
+            $this->dateTimeToExcel($invoice->tgl_meninggal),
             $invoice->tempat_meninggal,
-            Date::dateTimeToExcel($invoice->tgl_entri)
+            $this->dateTimeToExcel($invoice->tgl_entri)
 
         ];
     }
