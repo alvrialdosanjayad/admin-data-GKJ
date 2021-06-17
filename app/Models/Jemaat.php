@@ -35,6 +35,7 @@ class Jemaat extends Model
         'keadaan',
         'tgl_meninggal',
         'tempat_meninggal',
+        'foto_surat_baptis',
         'tgl_entri',
     ];
 
@@ -42,7 +43,7 @@ class Jemaat extends Model
 
     protected $casts = [
         'no_kk' => 'string',
-         'kode_jemaat' => 'string'
+        'kode_jemaat' => 'string'
     ];
     public $timestamps = false;
 }

@@ -44,6 +44,7 @@ class DashboardController extends Controller
             )
             ->get();
         $totalData[0]->totalUsia = number_format($totalData[0]->totalUsia);
+
         return $totalData;
     }
 
@@ -92,11 +93,11 @@ class DashboardController extends Controller
         $queryUmur = DB::table('jemaat')
             ->select(DB::raw("TIMESTAMPDIFF(YEAR, tanggal_lahir, CURDATE()) AS umur"))
             ->toSql();
-        $dataUmur = DB::table(DB::raw("({$queryUmur}) as sub"))
+        $data = DB::table(DB::raw("({$queryUmur}) as sub"))
             ->select(
                 DB::raw(
                     "CASE
-                        WHEN umur <= 15 THEN '... - 15'
+                        WHEN umur <= 15 THEN '0 - 15'
                         WHEN umur BETWEEN 16 and 27 THEN '16 - 27'
                         WHEN umur BETWEEN 28 and 40 THEN '28 - 40'
                         WHEN umur >= 41 THEN '41 - ...'
@@ -106,8 +107,12 @@ class DashboardController extends Controller
                 )
             )
             ->groupBy('name')
-            ->orderBy('name')
             ->get();
+
+        $dataUmur = collect();
+        $dataUmur = $data;
+        $dataUmur->shift();
+        $dataUmur->toJson();
         return $dataUmur;
     }
 
@@ -121,7 +126,9 @@ class DashboardController extends Controller
                 DB::raw('COUNT(jemaat.pendidikan) as y')
             )
             ->groupBy('pendidikan.pendidikan')
+            ->orderBy('pendidikan.id')
             ->get();
+
         return $dataPendidikan;
     }
 }

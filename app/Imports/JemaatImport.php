@@ -47,6 +47,7 @@ class JemaatImport implements ToModel, WithHeadingRow
             'keadaan' => $row['keadaan'],
             'tgl_meninggal' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggalmeninggal']),
             'tempat_meninggal' => $row['tempatmeninggal'],
+            'foto_surat_baptis' => null,
             'tgl_entri' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tglentri']),
         ]);
     }
